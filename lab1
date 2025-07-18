@@ -1,0 +1,135 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sakshi046/DDS2/blob/main/lab1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "%%writefile lab1_stack_cpp.cpp\n",
+        "#include\n",
+        "using namespace std;\n",
+        "\n",
+        "class Stack {\n",
+        "    int* arr;\n",
+        "    int top;\n",
+        "    int capacity;\n",
+        "\n",
+        "public:\n",
+        "    Stack(int size) {\n",
+        "        capacity = size;\n",
+        "        arr = new int[capacity];\n",
+        "        top = -1;\n",
+        "    }\n",
+        "\n",
+        "    void push(int value) {\n",
+        "        if (top == capacity - 1) {\n",
+        "            cout << \"Stack Overflow\" << endl;\n",
+        "            return;\n",
+        "        }\n",
+        "        arr[++top] = value;\n",
+        "        cout << \"Pushed: \" << value << endl;\n",
+        "    }\n",
+        "\n",
+        "    void pop() {\n",
+        "        if (top == -1) {\n",
+        "            cout << \"Stack Underflow\" << endl;\n",
+        "            return;\n",
+        "        }\n",
+        "        cout << \"Popped: \" << arr[top--] << endl;\n",
+        "    }\n",
+        "\n",
+        "    void peek() {\n",
+        "        if (top == -1) {\n",
+        "            cout << \"Stack is empty\" << endl;\n",
+        "        } else {\n",
+        "            cout << \"Top element: \" << arr[top] << endl;\n",
+        "        }\n",
+        "    }\n",
+        "\n",
+        "    void traverse() {\n",
+        "        if (top == -1) {\n",
+        "            cout << \"Stack is empty\" << endl;\n",
+        "            return;\n",
+        "        }\n",
+        "        cout << \"Stack elements: \";\n",
+        "        for (int i = top; i >= 0; i--)\n",
+        "            cout << arr[i] << \" \";\n",
+        "        cout << endl;\n",
+        "    }\n",
+        "\n",
+        "    void search(int value) {\n",
+        "        for (int i = top; i >= 0; i--) {\n",
+        "            if (arr[i] == value) {\n",
+        "                cout << \"Found at position: \" << (top - i) << endl;\n",
+        "                return;\n",
+        "            }\n",
+        "        }\n",
+        "        cout << \"Element not found\" << endl;\n",
+        "    }\n",
+        "\n",
+        "    ~Stack() {\n",
+        "        delete[] arr;\n",
+        "    }\n",
+        "};\n",
+        "\n",
+        "int main() {\n",
+        "    int size;\n",
+        "    cout << \"Enter stack size: \";\n",
+        "    cin >> size;\n",
+        "\n",
+        "    Stack s(size);\n",
+        "    s.push(10);\n",
+        "    s.push(20);\n",
+        "    s.push(30);\n",
+        "    s.peek();\n",
+        "    s.traverse();\n",
+        "    s.search(20);\n",
+        "    s.pop();\n",
+        "    s.traverse();\n",
+        "\n",
+        "    return 0;\n",
+        "}\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "dnOSNNNNTxSz",
+        "outputId": "931debed-4e2e-4f4c-d59f-37a0b7a990e7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Writing lab1_stack_cpp.cpp\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
